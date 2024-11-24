@@ -1,0 +1,26 @@
+<!-- src/app/reservation-list/reservation-list.component.html -->
+<nav class="menu">
+  <button (click)="navigateTo('home')">Accueil</button>
+  <button (click)="logout()">Se déconnecter</button>
+</nav>
+<div class="reservation-list-container">
+  <h2 class="title">Liste des Réservations</h2>
+  
+  <div *ngIf="reservations.length > 0; else noReservations" class="reservation-list">
+    <ul>
+      <li *ngFor="let reservation of reservations" class="reservation-item">
+        <div class="reservation-info">
+          <p><strong>Utilisateur:</strong> {{ reservation.user }}</p>
+          <p><strong>Vol:</strong> {{ reservation.flight }}</p>
+          <p><strong>Date de réservation:</strong> {{ reservation.date_reserved | date: 'dd/MM/yyyy' }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noReservations>
+    <div class="no-reservations-message">
+      <p>Aucune réservation disponible pour le moment.</p>
+    </div>
+  </ng-template>
+</div>

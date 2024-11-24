@@ -1,0 +1,57 @@
+<!-- src/app/home/home.component.html -->
+<nav class="menu">
+  <button (click)="navigateTo('home')">Accueil</button>
+  <button (click)="navigateTo('flights')">Vols</button>
+  <button (click)="navigateTo('reservations')">Réservations</button>
+  <button (click)="logout()">Se déconnecter</button>
+</nav>
+
+<div class="home">
+  <h1 class="home-title">Bienvenue sur la page d'accueil</h1>
+
+  <!-- Photos d'avions -->
+  <div class="airplane-photos">
+    <img src="https://static.vecteezy.com/system/resources/previews/027/874/753/non_2x/an-aeroplane-ready-to-take-off-on-its-runway-ai-generative-photo.jpg" alt="Avion sur la piste" class="airplane-img">
+    <img src="https://flybitlux.com/wp-content/uploads/2022/05/airplane-taking-off-sunset-scene-generative-ai.jpg" alt="Avion au coucher de soleil" class="airplane-img">
+    <img src="https://img.freepik.com/premium-photo/generative-ai-private-jet-plane-sky-sunset_28914-14609.jpg" alt="Jet privé au crépuscule" class="airplane-img">
+  </div>
+
+  <!-- Catalogues -->
+  <div class="catalogs">
+    <h2 class="section-title">Découvrez Nos Catalogues</h2>
+    <div class="catalog">
+      <img src="https://www.palmvoyages.com/wp-content/uploads/2023/12/alger071223.png" alt="Catalogue voyage" class="catalog-img">
+      <p class="catalog-text"><strong>Voyage en Avion :</strong> Découvrez des offres exceptionnelles pour voyager dans le confort et le style.</p>
+    </div>
+    <div class="catalog">
+      <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/airlines%2C-airticketing%2C-booking%2C-flight%2C-trav-design-template-8b83f73fea984e32933dc607a2e903b4_screen.jpg?ts=1676282384" alt="Catalogue réservation" class="catalog-img">
+      <p class="catalog-text"><strong>Réservation Simplifiée :</strong> Trouvez vos billets à des tarifs imbattables pour des destinations variées.</p>
+    </div>
+    <div class="catalog">
+      <img src="https://img.freepik.com/vecteurs-premium/voyage-autour-du-monde-illustration_42053-456.jpg" alt="Catalogue destinations" class="catalog-img">
+      <p class="catalog-text"><strong>Destinations Rêvées :</strong> Explorez les destinations les plus prisées et planifiez votre prochaine aventure.</p>
+    </div>
+  </div>
+
+  <!-- Animations -->
+  <div class="animated-content">
+    <h2 class="animate__animated animate__fadeIn highlight-text">Bienvenue dans le monde des avions</h2>
+    <p class="animate__animated animate__bounceIn highlight-subtext">Explorez nos offres et catalogues uniques.</p>
+  </div>
+
+  <!-- Suite de contenu -->
+  <div class="content-suite">
+    <section class="content-item">
+      <h3 class="content-title">Notre Histoire</h3>
+      <p class="content-text">Depuis nos débuts, nous connectons des personnes et des cultures à travers le monde grâce à nos services aériens exceptionnels.</p>
+    </section>
+    <section class="content-item">
+      <h3 class="content-title">Nos Destinations</h3>
+      <p class="content-text">Que vous rêviez de plages paradisiaques ou de métropoles animées, nos destinations sauront vous émerveiller.</p>
+    </section>
+    <section class="content-item">
+      <h3 class="content-title">Nos Vols</h3>
+      <p class="content-text">Consultez nos horaires flexibles et profitez d’un confort optimal à bord de notre flotte moderne.</p>
+    </section>
+  </div>
+</div>

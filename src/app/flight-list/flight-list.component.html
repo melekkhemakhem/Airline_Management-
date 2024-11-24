@@ -1,0 +1,62 @@
+<nav class="menu">
+  <button (click)="navigateTo('home')">Accueil</button>
+  <button (click)="navigateTo('reservations')">Réservations</button>
+  <button (click)="logout()">Se déconnecter</button>
+</nav>
+<div class="flight-list-container">
+  <h2 class="title">Rechercher des vols</h2>
+
+  <!-- Formulaire de recherche -->
+  <div class="search-form">
+    <label for="tripType">Type de voyage</label>
+    <select id="tripType" [(ngModel)]="searchFilters.tripType">
+      <option value="Round_trip">Round trip</option>
+      <option value="One_way">One way</option>
+      <option value="Multi_city">Multi city</option>
+    </select>
+
+    <label for="from">From</label>
+    <select id="from" [(ngModel)]="searchFilters.from">
+      <option *ngFor="let departure of availableDepartures" [value]="departure">{{ departure }}</option>
+    </select>
+
+    <label for="to">To</label>
+    <select id="to" [(ngModel)]="searchFilters.to">
+      <option *ngFor="let arrival of availableArrivals" [value]="arrival">{{ arrival }}</option>
+    </select>
+
+    <label for="departDate">Depart on</label>
+    <input type="date" id="departDate" [(ngModel)]="searchFilters.departDate">
+
+    <label for="numPassengers">Who will be travelling?</label>
+    <select id="numPassengers" [(ngModel)]="searchFilters.numPassengers">
+      <option value="1">1 Adult</option>
+      <option value="2">2 Adults</option>
+      <option value="3">3 Adults</option>
+    </select>
+
+    <button (click)="filterFlights()">Search</button>
+    <button (click)="navigateToReservations()">Réservation</button>
+  </div>
+
+  <!-- Liste des résultats -->
+  <div *ngIf="searchClicked">
+    <div *ngIf="filterFlights().length > 0; else noFlights">
+      <ul class="flight-list">
+        <li *ngFor="let flight of filterFlights()">
+          <div class="flight-info">
+            <h3 class="flight-number">{{ flight.flight_number }}</h3>
+            <div class="flight-details">
+              <p><strong>Origine:</strong> {{ flight.departure }}</p>
+              <p><strong>Destination:</strong> {{ flight.arrival }}</p>
+              <p><strong>Date:</strong> {{ flight.date | date: 'dd/MM/yyyy' }}</p>
+              <p><strong>Prix:</strong> {{ flight.price }} €</p>
+              <p><strong>Heure:</strong> {{ flight.time }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <ng-template #noFlights>
+  

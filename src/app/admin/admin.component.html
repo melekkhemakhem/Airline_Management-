@@ -1,0 +1,188 @@
+<div class="admin-container">
+  <h1>Panneau d'administration</h1>
+
+  <!-- Menu de navigation -->
+  <nav>
+    <ul>
+      <li><button (click)="selectSection3()">Gestion des Vols</button></li>
+      <li><button (click)="selectSection2()">Gestion des Réservations</button></li>
+      <li><button (click)="selectSection()">Gestion des Utilisateurs</button></li>
+      <li><button (click)="logout()">Se déconnecter</button></li>
+    </ul>
+  </nav>
+
+  <!-- Gestion des vols -->
+  <div #vols style="display: none">
+    <div class="form-section">
+      <h2>{{ isEditing ? "Modifier un vol" : "Ajouter un nouveau vol" }}</h2>
+      <form [formGroup]="flightForm" (ngSubmit)="saveFlight()">
+        <div class="form-group">
+          <label for="flightNumber">Numéro de vol</label>
+          <input id="flightNumber" type="text" formControlName="flight_number" placeholder="Numéro de vol" />
+        </div>
+        <div class="form-group">
+          <label for="departure">Départ</label>
+          <input id="departure" type="text" formControlName="departure" placeholder="Ville de départ" />
+        </div>
+        <div class="form-group">
+          <label for="arrival">Arrivée</label>
+          <input id="arrival" type="text" formControlName="arrival" placeholder="Ville d'arrivée" />
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input id="date" type="date" formControlName="date" />
+        </div>
+        <div class="form-group">
+          <label for="time">Heure</label>
+          <input id="time" type="time" formControlName="time" />
+        </div>
+        <div class="form-group">
+          <label for="price">Prix</label>
+          <input id="price" type="number" formControlName="price" placeholder="Prix du vol" />
+        </div>
+        <button type="submit" class="btn primary">{{ isEditing ? "Mettre à jour" : "Ajouter" }}</button>
+        <button type="button" class="btn secondary" (click)="resetForm()">Réinitialiser</button>
+      </form>
+    </div>
+
+    <!-- Liste des vols -->
+    <div *ngIf="isMenuVisible" class="list-section">
+      <h2>Liste des Vols</h2>
+      <table class="flights-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Numéro</th>
+            <th>Départ</th>
+            <th>Arrivée</th>
+            <th>Date</th>
+            <th>Prix</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flights; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.departure }}</td>
+            <td>{{ flight.arrival }}</td>
+            <td>{{ flight.date }}</td>
+            <td>{{ flight.price }}</td>
+            <td>
+              <button class="btn edit" (click)="editFlight(flight)">Modifier</button>
+              <button class="btn delete" (click)="deleteFlight(flight.id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Gestion des réservations -->
+  <div #reser style="display: none">
+    <div class="form-section">
+      <h2>{{ selectedReservation ? "Modifier une réservation" : "Ajouter une réservation" }}</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="user">Utilisateur</label>
+          <input type="text" id="user" [(ngModel)]="email" name="user" required placeholder="Entrez votre nom" />
+        </div>
+        <div class="form-group">
+          <label for="flight">Vol</label>
+          <select id="flight" [(ngModel)]="reservation.flight" name="flight" required>
+            <option *ngFor="let flight of flights" [value]="flight.id">
+              {{ flight.flight_number }} - {{ flight.departure }} → {{ flight.arrival }}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn primary">{{ selectedReservation ? "Mettre à jour" : "Ajouter" }}</button>
+        <button type="button" class="btn secondary" (click)="resetReservationForm()">Réinitialiser</button>
+      </form>
+    </div>
+
+    <!-- Liste des réservations -->
+    <div class="list-section">
+      <h2>Liste des Réservations</h2>
+      <table class="reservations-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Utilisateur</th>
+            <th>Vol</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reservation of reservations; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ reservation.user }}</td>
+            <td>{{ reservation.flight.flight_number }} - {{ reservation.flight?.departure }} → {{ reservation.flight?.arrival }}</td>
+            <td>
+              <button class="btn edit" (click)="editReservation(reservation)">Modifier</button>
+              <button class="btn delete" (click)="onDelete(reservation.id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Gestion des utilisateurs -->
+  <div #us style="display: none">
+    <div class="user-management-container">
+      <h2>{{ isEdit ? 'Editer un utilisateur' : 'Gérer les utilisateurs' }}</h2>
+
+      <div *ngIf="!isEdit || isEdit" class="user-form">
+        <form (ngSubmit)="save()">
+          <label for="username">Nom d'utilisateur:</label>
+          <input id="username" [(ngModel)]="user.username" name="username" required />
+
+          <label for="email">Email:</label>
+          <input id="email" [(ngModel)]="user.email" name="email" required />
+
+          <label for="first_name">Prénom:</label>
+          <input id="first_name" [(ngModel)]="user.first_name" name="first_name" />
+
+          <label for="last_name">Nom:</label>
+          <input id="last_name" [(ngModel)]="user.last_name" name="last_name" />
+
+          <label for="password">Mot de passe:</label>
+          <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
+
+          <button type="submit">{{ isEdit ? 'Mettre à jour' : 'Créer' }}</button>
+          <button type="button" (click)="resetForm2()">Réinitialiser</button>
+        </form>
+      </div>
+
+      <!-- Liste des utilisateurs -->
+      <div *ngIf="!isEdit">
+        <h3>Liste des utilisateurs</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom d'utilisateur</th>
+              <th>Email</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>
+                <button class="btn delete" (click)="deleteUser(user.id!)">Supprimer</button>
+                <button class="btn edit" (click)="editUser(user.id!)">Modifier</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

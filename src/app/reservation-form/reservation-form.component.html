@@ -1,0 +1,47 @@
+<nav class="menu">
+  <button (click)="navigateTo('home')">Accueil</button>
+  <button (click)="navigateTo('reservations')">Réservations</button>
+  <button (click)="logout()">Se déconnecter</button>
+</nav>
+<div class="reservation-form">
+    <h2>Créer une réservation</h2>
+    <form (ngSubmit)="onSubmit()">
+      
+      <label for="user">Utilisateur</label>
+      <input 
+        type="text" 
+        id="user" 
+        [(ngModel)]="email"  
+        name="user" 
+        required 
+        placeholder="Entrez votre nom" />
+    
+      <label for="flight">Vol</label>
+      <select 
+        id="flight" 
+        [(ngModel)]="reservation.flight" 
+        name="flight" 
+        required>
+        <option *ngFor="let flight of flights" [value]="flight.id">
+          {{ flight.flight_number }} - {{ flight.departure }} → {{ flight.arrival }}
+        </option>
+      </select>
+    
+      <button type="submit">Réserver</button>
+    </form>
+  
+    <!-- <h2>Réservations existantes</h2>
+    <div *ngIf="reservations.length > 0; else noReservations">
+      <ul>
+        <li *ngFor="let reservation of reservations">
+          {{ reservation.user }} - {{ reservation.flight }} (Réservé le {{ reservation.date_reserved }})
+          <button (click)="onDelete(reservation.id)">Supprimer</button>
+          <button (click)="onUpdate(reservation.id)">Mettre à jour</button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noReservations>
+      <p>Aucune réservation trouvée.</p>
+    </ng-template> -->
+  </div>
+  

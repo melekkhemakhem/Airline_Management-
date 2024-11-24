@@ -1,0 +1,238 @@
+
+/* src/styles.css */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #444;
+}
+
+/* Typography enhancements */
+.home-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #004d99;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #0073e6;
+  margin-bottom: 15px;
+  text-align: center;
+  font-style: italic;
+}
+
+.catalog-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  font-family: 'Georgia', serif;
+}
+
+.highlight-text {
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-subtext {
+  font-size: 1.2rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* Content section */
+.content-title {
+  font-size: 1.4rem;
+  color: #003366;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.content-text {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+
+/* Navbar styling */
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #004d99;
+  padding: 10px 0;
+  
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu button {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.menu button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #00c1ff;
+  transition: width 0.3s ease;
+}
+
+.menu button:hover {
+  color: #00c1ff;
+}
+
+.menu button:hover::before {
+  width: 100%;
+}
+
+/* Main section */
+.home {
+  padding: 20px;
+}
+
+.airplane-photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.airplane-img {
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.airplane-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Catalogs */
+.catalogs {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.catalog {
+  display: inline-block;
+  width: 20%;
+  margin: 15px;
+  text-align: left;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.catalog:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.catalog-img {
+  width: 100%;
+  height: auto;
+}
+
+.catalog p {
+  padding: 15px;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Animated content */
+.animated-content {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.animated-content h2 {
+  font-size: 24px;
+  color: #004d99;
+  margin-bottom: 10px;
+}
+
+.animated-content p {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Content suite */
+.content-suite {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 40px 0;
+  gap: 20px;
+}
+
+.content-item {
+  width: 30%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.content-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.content-item h3 {
+  margin-bottom: 10px;
+  color: #004d99;
+  font-size: 20px;
+}
+
+.content-item p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .airplane-photos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .catalog {
+    width: 80%;
+  }
+
+  .content-suite {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-item {
+    width: 90%;
+  }
+}

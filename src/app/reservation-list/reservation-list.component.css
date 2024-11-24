@@ -1,0 +1,111 @@
+/* Navbar styling */
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #004d99;
+  padding: 10px 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu button {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.menu button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #00c1ff;
+  transition: width 0.3s ease;
+}
+
+.menu button:hover {
+  color: #00c1ff;
+}
+
+.menu button:hover::before {
+  width: 100%;
+}
+
+/* Reservation list container */
+.reservation-list-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #004d99;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Reservation list */
+.reservation-list {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.reservation-item:last-child {
+  border-bottom: none;
+}
+
+.reservation-info p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.reservation-info strong {
+  color: #004d99;
+}
+
+/* No reservations message */
+.no-reservations-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reservation-list-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .reservation-list {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h2 class="login-title">Connexion</h2>
+  
+  <form (ngSubmit)="onSubmit_user()" class="login-form">
+    <div class="form-group">
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" [(ngModel)]="credentials.username" name="username" required placeholder="Entrez votre nom d'utilisateur" />
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" [(ngModel)]="credentials.password" name="password" required placeholder="Entrez votre mot de passe" />
+    </div>
+  
+    <button type="submit" class="submit-btn">Se connecter</button>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </form>
+  
+  <div class="forgot-password">
+    <a href="registre">Créer un compte</a>
+  </div>
+</div>
