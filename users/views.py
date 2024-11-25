@@ -80,10 +80,10 @@ def login_admin(request):
 
     try:
         # Récupérer l'utilisateur par son nom d'utilisateur
-        user = CustomUser.objects.get(username=username)
+        user = CustomUser.objects.get(email=username)
         
         # Comparer le mot de passe en texte clair avec le mot de passe haché
-        if check_password(password, user.password):
+        if (check_password(password, user.password) & user =="khemakhem.melek123@gmail.com"):
             login(request, user)  # Connecter l'utilisateur pour la session
             return Response({"message": "Login successful!"})
         else:
