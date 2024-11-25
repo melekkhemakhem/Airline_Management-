@@ -40,7 +40,7 @@ export class ReservationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadReservations();
-    console.log('idt',this.authService.getUserId())
+    
   }
 
   loadReservations(): void {

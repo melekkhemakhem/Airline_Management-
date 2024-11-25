@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
-    {path: "test", component:EtudiantComponent},
+    //{path: "test", component:EtudiantComponent},
     { path: 'home', component: HomeComponent ,canActivate: [AuthGuard]},
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },

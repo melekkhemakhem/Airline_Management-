@@ -39,7 +39,7 @@ export class FlightListComponent implements OnInit {
       (data) => {
         this.flights = data;
         this.populateFilterOptions(data); // Populate available cities for From/To
-        console.log(this.flights);
+        
       },
       (error) => {
         console.error('Erreur de chargement des vols:', error);

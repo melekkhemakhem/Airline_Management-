@@ -68,7 +68,7 @@ export class ReservationFormComponent implements OnInit {
     this.getUserId().then((userId) => {
       // Assurez-vous que l'ID utilisateur est bien assigné
       this.reservation.user = userId;
-      console.log(this.reservation)
+      
     this.reservationService.createReservation(this.reservation).subscribe(
       (data) => {
         alert('Réservation réussie!');

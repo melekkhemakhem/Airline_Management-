@@ -96,7 +96,7 @@ export class AdminComponent implements OnInit {
     this.flightService.getFlights().subscribe(
       (data) => {
         this.flights = data;
-        console.log('Vols récupérés :', data);
+        
   
         // Une fois les vols récupérés, relier aux réservations si déjà disponibles
         if (this.reservations.length) {
@@ -176,7 +176,7 @@ export class AdminComponent implements OnInit {
     this.reservationService.getReservations().subscribe(
       (data) => {
         this.reservations = data;
-        console.log('Réservations récupérées :', data);
+        
   
         // Une fois les réservations récupérées, relier les vols si déjà disponibles
         if (this.flights.length) {
@@ -195,7 +195,7 @@ export class AdminComponent implements OnInit {
       const flightDetails = this.flights.find((flight) => flight.id === reservation.flight);
       return { ...reservation, flight: flightDetails }; // Enrichir les données de réservation
     });
-    console.log('Réservations enrichies avec les vols :', this.reservations);
+    
   }
 
   // // Ajouter ou mettre à jour une réservation
