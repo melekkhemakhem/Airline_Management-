@@ -66,22 +66,48 @@ export class LoginComponent {
   async onSubmit_user(): Promise<void> {
     try {
       const userId = await this.getUserId();  // Attendre la résolution de getUserId()
-
+  
       this.authService.setUserId(Number(userId));  // Assurez-vous que l'ID est correctement défini
-      //console.log(this.authService.getUserId());  // Afficher l'ID de l'utilisateur
-
+  
       localStorage.setItem('token', 'fake-access-token');  // Stocker le token (vous pouvez ajuster selon votre API)
-
+  
+      // Vérification de l'email spécifique pour l'administrateur
       if (this.credentials.username === "khemakhem.melek123@gmail.com") {
-        this.router.navigate(['/admin']);
+        // Appel au service pour la connexion admin
+        this.authService.login_admin(this.credentials).subscribe(
+          (response) => {
+            // Si la connexion réussit, naviguer vers la page admin
+            
+            this.router.navigate(['/admin']);
+          },
+          // (error) => {
+          //   // Si la connexion échoue, afficher un message d'erreur
+          //   console.error("Erreur de connexion admin", error);
+          //   this.errorMessage = error.error.message || 'Erreur de connexion admin';
+          // }
+        );
       } else {
-        this.router.navigate(['/home']);  // Naviguer vers la page d'accueil
+        // Appel au service de login pour les utilisateurs autres que l'admin
+        this.authService.login(this.credentials).subscribe(
+          (response) => {
+            // Si la connexion réussit, naviguer vers la page d'accueil
+           
+            this.router.navigate(['/home']);
+          },
+          // (error) => {
+          //   // Si la connexion échoue, afficher un message d'erreur
+          //   console.error("Erreur de connexion", error);
+          //   this.errorMessage = error.error.message || 'Erreur de connexion';
+          // }
+        );
       }
     } catch (error) {
       this.errorMessage = 'Utilisateur non trouvé.';
       console.error('Login error', error);
     }
   }
+  
+  
 
   // Fonction de fallback pour le login si vous préférez une méthode synchrone
   // onSubmit(): void {

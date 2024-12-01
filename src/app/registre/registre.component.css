@@ -11,9 +11,9 @@ body {
 }
 
 .registre-container {
-  background: white;
+  background: linear-gradient(135deg, #004d99, #00bfff21, #4cc3ff);
   padding: 30px 40px;
-  border-radius: 20px;
+  border-radius: 50px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 100%;
@@ -99,5 +99,186 @@ body {
   .registre-container {
     padding: 20px;
     width: 90%;
+  }
+}
+
+.registre-back {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, rgba(0, 77, 153, 0.2), rgba(0, 191, 255, 0.2), rgba(102, 204, 255, 02)); /* Couleurs avec transparence */
+  background-size: 300% 300%;
+  animation: gradientAnimation 6s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 80px;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.registre-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 80%;
+  background: transparent;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-section {
+  background: url('https://img.freepik.com/premium-photo/airplane-runway-airport-with-blue-sky-background-ai-generated_768733-20537.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  border-radius: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.left-section h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4); /* Ombre pour rendre le texte plus lisible */
+}
+
+.left-section p {
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.right-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registre-form-container {
+  background: linear-gradient(135deg, #004d99, #00bfff21, #4cc3ff);
+  padding: 30px 40px;
+  border-radius: 50px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  
+}
+
+.registre-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #004d99;
+}
+
+.registre-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+  outline: none;
+}
+
+.submit-btn {
+  background: #004d99;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0066cc;
+  transform: scale(1.05); /* Grossir légèrement */
+}
+
+.error-message {
+  color: #e63946;
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+.login-link {
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #004d99;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-section {
+    padding: 20px;
+    height: auto;
+  }
+
+  .right-section {
+    padding: 20px;
   }
 }

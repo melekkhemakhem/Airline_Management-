@@ -1,25 +1,51 @@
-
-
-<div class="login-container">
-  <h2 class="login-title">Connexion</h2>
-  
-  <form (ngSubmit)="onSubmit_user()" class="login-form">
-    <div class="form-group">
-      <label for="username">Nom d'utilisateur</label>
-      <input type="text" id="username" [(ngModel)]="credentials.username" name="username" required placeholder="Entrez votre nom d'utilisateur" />
+<div class="back">
+  <div class="container">
+    <div class="left-section">
+      <h1>Explorez l'Univers Airplane</h1>
+      <p>
+        Bienvenue à bord ! Découvrez un nouveau monde de voyages haut de gamme. 
+        Avec Airplane, réservez vos voyages en toute simplicité et vivez une expérience inoubliable. 
+        Voyagez confortablement et en toute sérénité à travers notre plateforme moderne et intuitive.
+      </p>
     </div>
-  
-    <div class="form-group">
-      <label for="password">Mot de passe</label>
-      <input type="password" id="password" [(ngModel)]="credentials.password" name="password" required placeholder="Entrez votre mot de passe" />
-    </div>
-  
-    <button type="submit" class="submit-btn">Se connecter</button>
+    <div class="right-section">
+      <div class="login-container">
+        <h2 class="login-title">Connexion</h2>
 
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-  </form>
-  
-  <div class="forgot-password">
-    <a href="registre">Créer un compte</a>
+        <form (ngSubmit)="onSubmit_user()" class="login-form">
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              [(ngModel)]="credentials.username"
+              name="username"
+              required
+              placeholder="Entrez votre nom d'utilisateur"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              [(ngModel)]="credentials.password"
+              name="password"
+              required
+              placeholder="Entrez votre mot de passe"
+            />
+          </div>
+
+          <button type="submit" class="submit-btn">Se connecter</button>
+
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </form>
+
+        <div class="forgot-password">
+          <a href="registre">Créer un compte</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

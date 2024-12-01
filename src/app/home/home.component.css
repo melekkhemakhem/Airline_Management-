@@ -69,10 +69,18 @@ body {
   align-items: center;
   background-color: #004d99;
   padding: 10px 0;
-  
+  border-radius: 20px;
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Main section */
+.home {
+  padding: 20px;
+  background: linear-gradient(135deg, #004d99, #00bfff21, #4cc3ff);
+  border-radius: 40px;
+  margin-top: 30px; /* Ajoute de l'espace entre le menu et la section home */
 }
 
 .menu button {
@@ -107,10 +115,7 @@ body {
   width: 100%;
 }
 
-/* Main section */
-.home {
-  padding: 20px;
-}
+
 
 .airplane-photos {
   display: flex;

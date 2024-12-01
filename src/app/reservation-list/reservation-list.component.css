@@ -5,6 +5,7 @@
   align-items: center;
   background-color: #004d99;
   padding: 10px 0;
+  border-radius: 20px;
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -45,7 +46,9 @@
 /* Reservation list container */
 .reservation-list-container {
   padding: 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, #004d99, #00bfff21, #4cc3ff);
+  border-radius: 40px;
+  margin-top: 30px; /* Ajoute de l'espace entre le menu et la section home */
 }
 
 h2.title {
@@ -58,7 +61,7 @@ h2.title {
 
 /* Reservation list */
 .reservation-list {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.623);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

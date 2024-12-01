@@ -71,9 +71,11 @@ getUsers(): Observable<User[]> {
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}login/`, credentials);
   }
+  
   login_admin(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}login_admin/`, credentials);
   }
+  
   consulter(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}`);
   }

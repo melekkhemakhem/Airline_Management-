@@ -1,41 +1,50 @@
-<!-- src/app/registre/registre.component.html -->
-
-<div class="registre-container">
-    <h2 class="registre-title">Inscription</h2>
+<div class="registre-back">
+  <div class="registre-container">
+    <div class="left-section">
+      <h1>Rejoignez l'expérience Airplane</h1>
+      <p>
+        Créez un compte pour accéder à notre plateforme et profitez de services exclusifs. Rejoignez-nous et explorez de nouvelles opportunités pour votre voyage.
+      </p>
+    </div>
+    <div class="right-section">
+      <div class="registre-form-container">
+        <h2 class="registre-title">Inscription</h2>
+        
+        <form (ngSubmit)="onSubmit()" class="registre-form">
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" [(ngModel)]="credentials.username" name="username" required placeholder="Entrez votre nom d'utilisateur" />
+          </div>
+        
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" [(ngModel)]="credentials.email" name="email" required placeholder="Entrez votre email" />
+          </div>
+        
+          <div class="form-group">
+            <label for="first_name">Prénom</label>
+            <input type="text" id="first_name" [(ngModel)]="credentials.first_name" name="first_name" required placeholder="Entrez votre prénom" />
+          </div>
     
-    <form (ngSubmit)="onSubmit()" class="registre-form">
-      <div class="form-group">
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" id="username" [(ngModel)]="credentials.username" name="username" required placeholder="Entrez votre nom d'utilisateur" />
+          <div class="form-group">
+            <label for="last_name">Nom</label>
+            <input type="text" id="last_name" [(ngModel)]="credentials.last_name" name="last_name" required placeholder="Entrez votre nom" />
+          </div>
+        
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" [(ngModel)]="credentials.password" name="password" required placeholder="Entrez votre mot de passe" />
+          </div>
+        
+          <button type="submit" class="submit-btn">S'inscrire</button>
+    
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </form>
+        
+        <div class="login-link">
+          <p>Vous avez déjà un compte ? <a (click)="navigateTo('login')">Se connecter</a></p>
+        </div>
       </div>
-    
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" [(ngModel)]="credentials.email" name="email" required placeholder="Entrez votre email" />
-      </div>
-    
-      <div class="form-group">
-        <label for="first_name">Prénom</label>
-        <input type="text" id="first_name" [(ngModel)]="credentials.first_name" name="first_name" required placeholder="Entrez votre prénom" />
-      </div>
-  
-      <div class="form-group">
-        <label for="last_name">Nom</label>
-        <input type="text" id="last_name" [(ngModel)]="credentials.last_name" name="last_name" required placeholder="Entrez votre nom" />
-      </div>
-    
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" [(ngModel)]="credentials.password" name="password" required placeholder="Entrez votre mot de passe" />
-      </div>
-    
-      <button type="submit" class="submit-btn">S'inscrire</button>
-  
-      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-    </form>
-    
-    <div class="login-link">
-      <p>Vous avez déjà un compte ? <a (click)="navigateTo('login')">Se connecter</a></p>
     </div>
   </div>
-  
+</div>
